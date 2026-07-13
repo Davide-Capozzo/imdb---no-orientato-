@@ -27,8 +27,20 @@ class Controller:
         self._model.buildGraph(rating1, rating2)
         nNodi, nArchi = self._model.getGraphDetails()
 
-        self._view.txt_result.controls.append(ft.Text("Grafo correttamente creato"))
+        self._view.txt_result.controls.append(ft.Text("Grafo correttamente creato", color = "red"))
         self._view.txt_result.controls.append(ft.Text(f"Numero di nodi: {nNodi} \nNumero di Archi: {nArchi}"))
+
+        #TOP5
+        top5 = self._model.getTop5()
+        self._view.txt_result.controls.append(ft.Text("Top 5 archi di peso maggiore:", color = "red"))
+        for a in top5:
+            self._view.txt_result.controls.append(ft.Text(f"{a[0]} -> {a[1]},"
+                                                          f"Peso: {a[2]['weight']}",
+                                                          color = "blue"))
+
+        #COMPONENTI CONNESSE
+        self._view.txt_result.controls.append(ft.Text("Numero di componenti connesse:", color = "red"))
+        self._view.txt_result.controls.append(ft.Text(f"{self._model.getConnessaInfo()}"))
 
         self._view.update_page()
 

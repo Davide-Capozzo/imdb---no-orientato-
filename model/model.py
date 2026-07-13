@@ -45,3 +45,10 @@ class Model:
     def getGraphDetails(self):
         return len(self._graph.nodes), len(self._graph.edges)
 
+    def getTop5(self):
+        return sorted(self._graph.edges(data = True),
+                      key = lambda x: x[2]['weight'], reverse = True)[:5]
+
+    def getConnessaInfo(self):
+        components = list(nx.connected_components(self._graph))
+        return len(components)
