@@ -50,5 +50,9 @@ class Model:
                       key = lambda x: x[2]['weight'], reverse = True)[:5]
 
     def getConnessaInfo(self):
+        #Numero componenti connesse
         components = list(nx.connected_components(self._graph))
-        return len(components)
+
+        #Componente connessas maggiore
+        largest = max(components, key = len)
+        return len(components), largest

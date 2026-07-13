@@ -39,8 +39,8 @@ class Controller:
                                                           color = "blue"))
 
         #COMPONENTI CONNESSE
-        self._view.txt_result.controls.append(ft.Text("Numero di componenti connesse:", color = "red"))
-        self._view.txt_result.controls.append(ft.Text(f"{self._model.getConnessaInfo()}"))
+        self._view.txt_result.controls.append(ft.Text(f"Numero di componenti connesse: \n{self._model.getConnessaInfo()[0]}"
+                                                      f"\n Componente connessa maggiore: {self._model.getConnessaInfo()[1]}"))
 
         self._view.update_page()
 
